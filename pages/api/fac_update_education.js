@@ -89,7 +89,7 @@ export default async function handler(req, res) {
         }
       }
 
-      res.status(200).json({ message: "Education records added/updated successfully" });
+      //res.status(200).json({ message: "Education records added/updated successfully" });
     } else if (req.method === "DELETE") {
       const { id } = req.body;
 

@@ -14,6 +14,7 @@ const HorizontalNavbar: React.FC = () => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const { user } = useUser();
+  const facultyId = user?.emp_id;
 
   const toggleMenu = () => {
     setIsExpanded((prev) => !prev);
@@ -247,6 +248,18 @@ const HorizontalNavbar: React.FC = () => {
                     { label: "Conference", href: "/mis_hod/hod_home" },
                     { label: "Journal", href: "/mis_hod/hod_home" },
                     { label: "Course attended", href: "/mis_hod/hod_home" },
+                    {
+                      label: "Update Personal",
+                      href: `/fac_update/${facultyId}`,
+                    },
+                    {
+                      label: "Update Academic",
+                      href: `/fac_update//academic${facultyId}`,
+                    },
+                    {
+                      label: "Update Research",
+                      href: `/fac_update/research/${facultyId}`,
+                    },
                   ].map((item) => (
                     <li
                       key={item.label}
@@ -331,6 +344,68 @@ const HorizontalNavbar: React.FC = () => {
                     <li
                       key={item.label}
                       className="hover:bg-gray-200 px-2 py-2 whitespace-nowrap"
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+            {/* Profile */}
+            <li className="relative hover:border-blue-500">
+              <div
+                className="flex items-center space-x-2 cursor-pointer hover:bg-blue-500 py-2 px-2 rounded"
+                onClick={() => toggleSubmenu("Profile")}
+              >
+                <GrCertificate className="text-sm" />
+                <span className="text-sm">Profile</span>
+                {openMenu === "Profile" ? <FaChevronUp /> : <FaChevronDown />}
+              </div>
+              {/* {openMenu === "Profile" && (
+                <ul className="absolute left-0 bg-white text-black mt-2 shadow-lg rounded z-50">
+                  {[
+                    {
+                      label: "Personal",
+                      href: "/mis_faculty/profile",
+                    },
+                    {
+                      label: "Academics",
+                      href: "/mis_faculty/profile/academics-details",
+                    },
+                    {
+                      label: "Research",
+                      href: "/mis_faculty/profile/research-details",
+                    },
+                  ].map((item) => (
+                    <li
+                      key={item.label}
+                      className="hover:bg-gray-200 px-4 py-2 whitespace-nowrap"
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )} */}
+              {openMenu === "Profile" && (
+                <ul className="absolute left-0 bg-white text-black mt-2 shadow-lg rounded z-50">
+                  {[
+                    {
+                      label: "Personal",
+                      href: "/mis_faculty/profile",
+                    },
+                    {
+                      label: "Academics",
+                      href: "/mis_faculty/profile",
+                    },
+                    {
+                      label: "Research",
+                      href: "/mis_faculty/profile",
+                    },
+                  ].map((item) => (
+                    <li
+                      key={item.label}
+                      className="hover:bg-gray-200 px-4 py-2 whitespace-nowrap"
                     >
                       <Link href={item.href}>{item.label}</Link>
                     </li>

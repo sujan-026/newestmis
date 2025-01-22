@@ -350,9 +350,9 @@ export default function FacultyDetailsPage() {
     return <div className="container mx-auto p-4">Loading...</div>;
   }
 
-  const customLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-    return `http://192.168.29.12/Employee_photos/${src}`;
-  };
+  // const customLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
+  //   return `http://192.168.29.12/Employee_photos/${src}`;
+  // };
 
   return (
     <div>

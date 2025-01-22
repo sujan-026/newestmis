@@ -37,10 +37,10 @@ export default async function handler(req, res) {
           WHERE [employee_id] = @employee_id;
         `,
         addtionalResponsibility: `
-          SELECT [id], [employee_id], [level], [fromDate], [toDate], [responsibility]
-          FROM [aittest].[dbo].[addtionalResponsibility]
-          WHERE [employee_id] = @employee_id;
-        `,
+            SELECT [id], [employee_id], [level], [fromDate], [toDate], [responsibility]
+            FROM [aittest].[dbo].[addtionalResponsibility]
+            WHERE [employee_id] = @employee_id;
+          `,
         Extracurricular: `
           SELECT [id], [employee_id], [eventType], [eventTitle], [fromDate], [toDate], 
                  [organizer], [level], [achievement]

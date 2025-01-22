@@ -12,7 +12,7 @@ const HorizontalNavbar: React.FC = () => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const { user } = useUser();
-
+  const facultyId = user?.emp_id;
   const toggleMenu = () => {
     setIsExpanded((prev) => !prev);
   };
@@ -219,33 +219,41 @@ const HorizontalNavbar: React.FC = () => {
               {openMenu === "AcademicsR&D" && (
                 <ul className="absolute left-0 bg-white text-black mt-2 shadow-lg rounded z-50">
                   {[
-                  {
-                    label: "Bonafied Certificate",
-                    href: "/admission/adm_certificate_bonafied",
-                  },
-                  {
-                    label: "Study Certificate",
-                    href: "/admission/adm_study_certificate",
-                  },
-                  {
-                    label: "Transfer Certificate",
-                    href: "/admission/adm_certificate_tc",
-                  },
-                  {
-                    label: "Update Research Details",
-                    href: "/mis_faculty/profile/research-update",
-                  },
-                  {
-                    label: "Add Research Details",
-                    href: `/faculty/faculty_reg/research`,
-                  },
+                    {
+                      label: "Bonafied Certificate",
+                      href: "/admission/adm_certificate_bonafied",
+                    },
+                    {
+                      label: "Study Certificate",
+                      href: "/admission/adm_study_certificate",
+                    },
+                    {
+                      label: "Transfer Certificate",
+                      href: "/admission/adm_certificate_tc",
+                    },
+                    {
+                      label: "Update Personal Details",
+                      href: `/fac_update/${facultyId}`,
+                    },
+                    {
+                      label: "Update Academic Details",
+                      href: `/fac_update/academic/${facultyId}`,
+                    },
+                    {
+                      label: "Update Research Details",
+                      href: `/fac_update/research/${facultyId}`,
+                    },
+                    {
+                      label: "Add Research Details",
+                      href: `/faculty/faculty_reg/research`,
+                    },
                   ].map((item) => (
-                  <li
-                    key={item.label}
-                    className="hover:bg-gray-200 px-4 py-2 whitespace-nowrap"
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </li>
+                    <li
+                      key={item.label}
+                      className="hover:bg-gray-200 px-4 py-2 whitespace-nowrap"
+                    >
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
                   ))}
                 </ul>
               )}
